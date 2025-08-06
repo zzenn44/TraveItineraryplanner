@@ -8,9 +8,13 @@ class UserBase(BaseModel):
     nationality: Optional[str]
     travelStyle: Optional[str]  
     preferences: Optional[List[str]] 
+    role: str = "user" 
 
 class UserCreate(UserBase):
-    pass
+    password: str
 
 class UserOut(UserBase):
     id: str
+    fullname: str
+    email: str
+    saved_itineraries: Optional[List[str]] = []

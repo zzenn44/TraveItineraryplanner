@@ -17,10 +17,11 @@ class ItineraryBase(BaseModel):
     user_id: str
     title: str
     duration_days: int
-    difficulty: Literal["Easy", "Moderate", "Challenging"]
+    difficulty: Literal['beginner', 'easy', 'friendly','moderate', 'intermediate','moderate', 'intermediate',"Beginner-friendly","Easy", "Moderate", "Challenging"]
     days: List[DayEntry]  # Multiple days, each with multiple destinations
     max_elevation_m: Optional[int] = None
     budget_estimate: Optional[str] = None
+    
     permit_required_nepali: Optional[bool] = None
     permit_fee_npr: Optional[int] = None
     rating: Optional[float] = None
@@ -35,4 +36,6 @@ class ItineraryCreate(ItineraryBase):
 # Includes all base fields + the unique MongoDB document ID
 class ItineraryOut(ItineraryBase):
     id: str
+class ItineraryByTitle(ItineraryBase):
+    title : str
 

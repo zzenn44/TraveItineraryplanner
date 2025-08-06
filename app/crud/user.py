@@ -2,10 +2,13 @@ from typing import List
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from bson import ObjectId
 from app.schemas.user import UserCreate
+from app.utils.security import hash_password
 
 # Create
-async def create_user(db: AsyncIOMotorDatabase, data: UserCreate) -> str:
-    result = await db["users"].insert_one(data.dict())
+async def create_user(db, data):
+    user_data = data.dict()
+    user_data["password"] = hash_password(user_data.pop("password"))
+    result = await db["users"].insert_one(user_data)
     return str(result.inserted_id)
 
 # Read All
@@ -38,3 +41,12 @@ async def update_user(db: AsyncIOMotorDatabase, id: str, data: UserCreate) -> bo
 async def delete_user(db: AsyncIOMotorDatabase, id: str) -> bool:
     result = await db["users"].delete_one({"_id": ObjectId(id)})
     return result.deleted_count == 1
+
+
+# Promote user to admin
+async def promote_user_to_admin(db: AsyncIOMotorDatabase, id: str) -> bool:
+    result = await db["users"].update_one(
+        {"_id": ObjectId(id)},
+        {"$set": {"role": "admin"}}
+    )
+    return result.modified_count == 1

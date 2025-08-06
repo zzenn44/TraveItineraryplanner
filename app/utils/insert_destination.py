@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 import os
 
 # Your scraped data
-from app.utils.destination_scraper import destination_list 
+from destination_scraper import destination_list 
 
-load_dotenv()
+load_dotenv(override=True)
 MONGO_URI = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(MONGO_URI)
 db = client["travel_db"]

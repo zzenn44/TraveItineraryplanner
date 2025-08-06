@@ -31,6 +31,20 @@ async def get_itinerary_by_id(db: AsyncIOMotorDatabase, id: str) -> dict:
         doc.pop("_id")
     return doc
 
+async def get_itinerary_by_title(db: AsyncIOMotorDatabase, title: str):
+    """Get itinerary by title"""
+    collection = db.get_collection("itinerary")
+    itinerary = await collection.find_one({"title": title})
+    
+    if itinerary:
+        itinerary["id"] = str(itinerary["_id"])
+        del itinerary["_id"]
+        return ItineraryByTitle(**itinerary)
+    
+    return None
+  
+
+
 # Update by ID
 async def update_itinerary(db: AsyncIOMotorDatabase, id: str, data: ItineraryCreate) -> bool:
     result = await db["itinerary"].update_one(

@@ -19,3 +19,5 @@ class DestinationCreate(DestinationBase):
 #Schema for API response: includes all destination fields + MongoDB's ID as a string
 class DestinationOut(DestinationBase):
     id: str
+
+

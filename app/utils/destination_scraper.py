@@ -1169,10 +1169,10 @@ destination_tribeni_badimalika={
  }
 
 destination_tso_rolpa={
-   "name": "Tso Rolpa",
-   "description": "Tso Rolpa is a large glacial lake in the Rolwaling region, important for hydrology and trekking expeditions.",
+   "name": "Tsho Rolpa",
+   "description": "Tsho Rolpa is a large glacial lake in the Rolwaling region, important for hydrology and trekking expeditions.",
    "tags": ["lake", "glacial lake", "rolwaling", "trekking"],
-   "region": "Province No. 1",
+   "region": "Bagmati",
    "photos": ["https://example.com/photo.jpg"],
    "coordinates": {
      "lat": 27.8100,
