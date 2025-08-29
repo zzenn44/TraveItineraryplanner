@@ -2,8 +2,24 @@ from fastapi import APIRouter, Depends, HTTPException
 from app.dependencies.auth import require_admin
 from app.database import get_database
 from app.crud import user as crud
+from motor.motor_asyncio import AsyncIOMotorDatabase
+
 
 router = APIRouter(prefix="/admin", tags=["admin"])
+ 
+@router.get("/stats", dependencies=[Depends(require_admin)])
+async def admin_stats(db: AsyncIOMotorDatabase = Depends(get_database)):
+    users_c = await db["users"].count_documents({})
+    dest_c  = await db["destination"].count_documents({})
+    loc_c   = await db["location_metadata"].count_documents({})
+    itin_c  = await db["itinerary"].count_documents({})
+
+    return {
+        "users": users_c,
+        "destinations": dest_c,
+        "locations": loc_c,
+        "itineraries": itin_c,
+    }
 
 # Existing example
 @router.get("/dashboard")

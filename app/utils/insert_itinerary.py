@@ -12,21 +12,24 @@ MONGO_URI = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(MONGO_URI)
 db = client["travel_db"]
 
-async def insert_itineraries():
+async def seed_itineraries():
     count = 0
     for itinerary in itinerary_list:
-        existing = await db.itinerary.find_one({"title": itinerary["title"]})
-        if existing:
-            print(f"Skipped (already exists): {itinerary['title']}")
-            continue
+        itinerary["updatedAt"] = datetime.now(timezone.utc)
 
-        itinerary["createdAt"] = datetime.now(timezone.utc)
-        result = await db.itinerary.insert_one(itinerary)
-        count += 1
-        print(f"[{count}] Inserted: {itinerary['title']}")
+        result = await db.itinerary.replace_one(
+            {"title": itinerary["title"]},  
+            itinerary,
+            upsert=True  
+        )
 
-    print(f"Total new itineraries inserted: {count}")
+        if result.matched_count > 0:
+            print(f"[UPDATED] {itinerary['title']}")
+        else:
+            print(f"[INSERTED] {itinerary['title']}")
+            count += 1
+
+    print(f"\n Total new itineraries inserted: {count}")
 
 if __name__ == "__main__":
-    asyncio.run(insert_itineraries())
-
+    asyncio.run(seed_itineraries())

@@ -3,7 +3,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from bson import ObjectId
 from datetime import datetime
 
-from app.schemas.itinerary import ItineraryCreate
+from app.schemas.itinerary import ItineraryCreate, ItineraryBase, ItineraryByTitle
 
 # Create
 async def create_itinerary(db: AsyncIOMotorDatabase, data: ItineraryCreate) -> str:
@@ -58,3 +58,8 @@ async def delete_itinerary(db: AsyncIOMotorDatabase, id: str) -> bool:
     result = await db["itinerary"].delete_one({"_id": ObjectId(id)})
     return result.deleted_count == 1
 
+async def get_itineraries_by_category(db: AsyncIOMotorDatabase, category: str) -> List[ItineraryBase]:
+    """Get itineraries by category"""
+    collection = db.get_collection("itinerary")
+    itineraries = await collection.find({"category": category}).to_list(length=None)
+    return itineraries

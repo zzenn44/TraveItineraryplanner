@@ -125,7 +125,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from bson import ObjectId
-from app.schemas.itinerary import ItineraryCreate, ItineraryOut, ItineraryByTitle
+from app.schemas.itinerary import ItineraryBase,ItineraryCreate, ItineraryOut, ItineraryByTitle
 from app.database import get_database
 from app.crud import itinerary as crud
 import re
@@ -208,3 +208,11 @@ async def get_by_slug(slug: str, db: AsyncIOMotorDatabase = Depends(get_database
     if not itinerary:
         raise HTTPException(status_code=404, detail="Itinerary not found")
     return itinerary
+
+@router.get("/category/{category}", response_model=List[ItineraryBase])
+async def get_by_category(category: str, db: AsyncIOMotorDatabase = Depends(get_database)):
+    """Get itineraries by category"""
+    itineraries = await crud.get_itineraries_by_category(db, category)
+    if not itineraries:
+        raise HTTPException(status_code=404, detail="No itineraries found for this category")
+    return itineraries

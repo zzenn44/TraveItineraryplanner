@@ -4,7 +4,7 @@ from datetime import datetime,timezone
 from dotenv import load_dotenv
 import os
 
-# Your scraped data
+
 from destination_scraper import destination_list 
 
 load_dotenv(override=True)

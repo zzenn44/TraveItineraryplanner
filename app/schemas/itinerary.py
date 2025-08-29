@@ -17,11 +17,13 @@ class ItineraryBase(BaseModel):
     user_id: str
     title: str
     duration_days: int
-    difficulty: Literal['beginner', 'easy', 'friendly','moderate', 'intermediate','moderate', 'intermediate',"Beginner-friendly","Easy", "Moderate", "Challenging"]
+    # difficulty: Literal['beginner', 'easy', 'friendly','moderate', 'intermediate','moderate', 'intermediate',"Beginner-friendly","Easy", "Moderate", "Challenging"]
+    difficulty: str
+    category: Optional[str] = None
     days: List[DayEntry]  # Multiple days, each with multiple destinations
     max_elevation_m: Optional[int] = None
     budget_estimate: Optional[str] = None
-    
+    image_link: Optional[str] = None
     permit_required_nepali: Optional[bool] = None
     permit_fee_npr: Optional[int] = None
     rating: Optional[float] = None
@@ -38,4 +40,3 @@ class ItineraryOut(ItineraryBase):
     id: str
 class ItineraryByTitle(ItineraryBase):
     title : str
-

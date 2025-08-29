@@ -15,6 +15,6 @@ class UserCreate(UserBase):
 
 class UserOut(UserBase):
     id: str
-    fullname: str
+    fullname: Optional[str] = None
     email: str
     saved_itineraries: Optional[List[str]] = []

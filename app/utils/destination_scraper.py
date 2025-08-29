@@ -1,4 +1,3 @@
-
 destination_chame={
     "name": "Chame",
    "description": "Chame is the district headquarters of Manang and a major stop on the Annapurna Circuit.",

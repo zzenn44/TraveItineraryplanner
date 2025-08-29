@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from app.routers import destination
+from app.routers import category
 from app.routers import itinerary
 from app.routers import user
+from app.routers import location
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import admin
 from app.routers import auth  
@@ -32,7 +34,9 @@ app.include_router(destination.router)
 app.include_router(itinerary.router)
 app.include_router(user.router)
 app.include_router(admin.router)
+app.include_router(location.router)
 app.include_router(auth.router)
+app.include_router(category.router)
 app.include_router(users_saved_itineraries.router)
 # app.include_router(recommend.router)
 app.include_router(recommendation.router)
