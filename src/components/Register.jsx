@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import registerBg from "../assets/loginpagepic.jpg";
+import maybe4 from "../assets/maybe4.jpg"; 
 
 const Register = () => {
   const navigate = useNavigate();
@@ -13,11 +13,14 @@ const Register = () => {
     age: "",
     nationality: "",
     travelStyle: "",
-    preferences: "" // comma-separated string
+    preferences: "" 
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleRegister = async (e) => {
@@ -70,14 +73,18 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] flex p-8 items-center justify-center">
-      <div className="flex w-full h-full shadow-lg rounded-lg overflow-hidden">
-        {/* Left side with image */}
-        <div className="w-1/2 relative hidden md:block">
-          <img src={registerBg} alt="Register" className="object-cover h-full w-full" />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex justify-center items-start pt-20 px-6 text-center">
-            <h2 className="text-white text-2xl font-bold font-baloo drop-shadow-xl tracking-wide">
-              ADVENTURE BEGINS WHERE PLANS END
+    <div className="min-h-screen flex items-center justify-center bg-[#e9ebd5] p-8">
+      <div className="flex w-full max-w-6xl h-[80vh] shadow-lg rounded-2xl overflow-hidden">
+        {/* Left side with image + overlay */}
+        <div className="relative w-1/2 h-full hidden md:block">
+          <img
+            src={maybe4}
+            alt="Register Background"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+          <div className="absolute  z-10 flex items-center justify-center px-6 text-center">
+            <h2 className="text-white text-3xl font-bold leading-snug z-20 max-w-[80%]">
+              TRAVEL IS THE ONLY THING YOU BUY THAT MAKES YOU RICHER
             </h2>
           </div>
         </div>
@@ -85,9 +92,9 @@ const Register = () => {
         {/* Right side form */}
         <form
           onSubmit={handleRegister}
-          className="w-full md:w-1/2 bg-[#CABA9C] p-8 flex flex-col justify-center gap-4"
+          className="w-full md:w-1/2 bg-white p-8 flex flex-col justify-center gap-6"
         >
-          <h2 className="text-[#2f3c25] text-3xl font-extrabold font-baloo text-center">
+          <h2 className="text-[#2f3c25] text-3xl font-extrabold font-baloo drop-shadow-2xl tracking-wide text-center">
             TripPal
           </h2>
 

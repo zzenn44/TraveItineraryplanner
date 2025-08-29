@@ -1,8 +1,9 @@
-// login.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import loginBg from "../assets/loginpagepic.jpg";
+import maybe4 from "../assets/maybe4.jpg"; 
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,10 +33,9 @@ const Login = () => {
         body: JSON.stringify({ email, password })
       });
 
-      if (res.ok) {
+       if (res.ok) {
         const data = await res.json();
         localStorage.setItem("token", data.access_token);
-        console.log(data.access_token);
         const payload = jwtDecode(data.access_token);
         localStorage.setItem("role", payload.role);
 
@@ -58,12 +58,17 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] flex p-8 items-center justify-center">
-      <div className="flex w-full h-full shadow-lg rounded-lg overflow-hidden">
-        <div className="w-1/2 relative hidden md:block">
-          <img src={loginBg} alt="Login" className="object-cover h-full w-full" />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex justify-center items-start pt-20 px-6 text-center">
-            <h2 className="text-white text-2xl font-bold drop-shadow-xl tracking-wide">
+    <div className="min-h-screen flex items-center justify-center bg-[#e9ebd5] p-8">
+      <div className="flex w-full max-w-6xl h-[80vh] shadow-lg rounded-lg overflow-hidden">
+        {/* Left side with image + overlay */}
+        <div className="relative w-1/2 h-full hidden md:block">
+          <img
+            src={maybe4}
+            alt="Login Background"
+            className="absolute  inset-0 w-full h-full object-cover z-0"
+          />
+          <div className="absolute   z-10 flex items-center justify-center px-6 text-center">
+            <h2 className="text-white text-3xl font-bold leading-snug z-20 max-w-[80%]">
               TRAVEL IS THE ONLY THING YOU BUY THAT MAKES YOU RICHER
             </h2>
           </div>
@@ -71,7 +76,7 @@ const Login = () => {
 
         <form
           onSubmit={handleLogin}
-          className="w-full md:w-1/2 bg-[#CABA9C] p-8 flex flex-col justify-center gap-6"
+          className="w-full md:w-1/2 bg-white p-8 flex flex-col justify-center gap-6"
         >
           <h2 className="text-[#2f3c25] text-3xl font-extrabold font-baloo drop-shadow-2xl tracking-wide text-center">
             TripPal
@@ -94,12 +99,21 @@ const Login = () => {
             required
           />
 
-          <button type="submit" className="bg-[#4c6444] text-white py-2 rounded hover:bg-[#3e5338] transition">
+          <button
+            type="submit"
+            className="bg-[#4c6444] text-white py-2 rounded hover:bg-[#3e5338] transition"
+          >
             Login
           </button>
 
           <p className="text-center text-sm">
-            Don’t have an account? <span onClick={goToRegister} className="text-blue-700 hover:underline cursor-pointer">Register here</span>
+            Don’t have an account?{" "}
+            <span
+              onClick={goToRegister}
+              className="text-blue-700 hover:underline cursor-pointer"
+            >
+              Register here
+            </span>
           </p>
         </form>
       </div>

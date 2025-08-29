@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PreferenceForm = () => {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ const PreferenceForm = () => {
     setFormData({ ...formData, tags: selectedTags });
   };
 
-  // Function to normalize difficulty to match model expectations
   const normalizeDifficulty = (difficulty) => {
     const difficultyMap = {
       'Beginner': 'beginner',
@@ -36,10 +36,8 @@ const PreferenceForm = () => {
     setIsLoading(true);
     
     try {
-      // Convert form data to the format expected by the API
       const apiData = {
         difficulty: normalizeDifficulty(formData.difficulty),
-        // Fixed: Match the API parameter names from your backend
         elevation: parseInt(formData.elevation) || 4000,
         duration: parseInt(formData.duration) || 7,
         cost: parseInt(formData.cost) || 15000,
@@ -59,7 +57,6 @@ const PreferenceForm = () => {
       
       console.log("Response status:", response.status);
       
-      // Get response text first to see what we're getting
       const responseText = await response.text();
       console.log("Raw response:", responseText);
       
@@ -68,18 +65,15 @@ const PreferenceForm = () => {
           const data = JSON.parse(responseText);
           console.log("Parsed response data:", data);
           
-          // Check if data has the expected structure
           if (data && data.recommendations) {
             navigate("/recommendations", {
               state: { recommendations: data.recommendations }
             });
           } else if (data && Array.isArray(data)) {
-            // Handle case where recommendations are returned as array directly
             navigate("/recommendations", {
               state: { recommendations: data }
             });
           } else if (data) {
-            // Handle case where the response is the recommendations object directly
             navigate("/recommendations", {
               state: { recommendations: data }
             });
@@ -92,7 +86,6 @@ const PreferenceForm = () => {
           alert("Invalid response format from server.");
         }
       } else {
-        // Try to parse error response
         try {
           const errorData = JSON.parse(responseText);
           console.error("Error response:", errorData);
@@ -112,7 +105,7 @@ const PreferenceForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#CABA9C] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#CABA9C] flex items-center justify-center px-4 py-12 flex-col">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-xl space-y-6 border border-[#e9ebd5]"
@@ -231,6 +224,9 @@ const PreferenceForm = () => {
           {isLoading ? "Getting Recommendations..." : "Get Recommendations"}
         </button>
       </form>
+    <Link to={"/landingpage"}>
+      <button className="rounded-xl bg-gray-400 px-2 py-2 mt-10 hover:bg-gray-500">Back to Home page</button>
+</Link>
     </div>
   );
 };

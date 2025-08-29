@@ -1,29 +1,3 @@
-// import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../context/AuthContext";
-
-// export default function AdminRoute({ children }) {
-//   const { user } = useAuth();
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     if (user) {
-//       if (user.role !== "admin") {
-//         navigate("/landingpage", { replace: true });
-//       }
-//     } else if (user === null) {
-//       // Still null → probably still decoding → do nothing yet
-//     } else {
-//       navigate("/", { replace: true });
-//     }
-//   }, [user, navigate]);
-
-//   if (!user || user.role !== "admin") {
-//     return null; // Render nothing while waiting or redirecting
-//   }
-
-//   return children;
-// }
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";

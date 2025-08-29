@@ -36,12 +36,8 @@ export default function LandingPage() {
         <div className="space-x-6 text-[#4c6444] font-medium flex items-center">
           <a href="#features" className="hover:underline">Features</a>
           <a href="#categories" className="hover:underline">Categories</a>
-          <a href="#explore" className="hover:underline">Explore</a>
-          <Link to="/saved-itineraries" className="text-white">Saved</Link>
-          <Link to="/recommended-itineraries">Recommendations</Link>
-          {user ? (
+          <Link to="/saved-itineraries" className="text-[#4c6444]">Saved</Link>
             <>
-              <span className="text-sm">Hi, {user.name || user.email}</span>
               <button
                 onClick={logout}
                 className="bg-[#4c6444] text-white px-3 py-1 rounded hover:bg-[#3e5338]"
@@ -49,14 +45,7 @@ export default function LandingPage() {
                 Logout
               </button>
             </>
-          ) : (
-            <button
-              onClick={() => navigate("/login")}
-              className="bg-[#4c6444] text-white px-4 py-1 rounded hover:bg-[#3e5338]"
-            >
-              Login
-            </button>
-          )}
+          
         </div>
       </nav>
 
@@ -163,7 +152,7 @@ export default function LandingPage() {
       </section>
 
       {/* Featured Trips */}
-      <section className="bg-[#f5f5f5] py-12">
+      <section className="bg-[#f5f5f5] py-12" id="features">
         <h2 className="text-3xl font-bold text-center text-[#4c6444] mb-8">
           Featured Treks
         </h2>
@@ -178,3 +167,4 @@ export default function LandingPage() {
  
   );
 }
+

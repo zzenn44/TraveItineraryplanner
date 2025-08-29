@@ -15,6 +15,7 @@ export default function DestinationManager() {
 
   const fetchDestinations = async () => {
     const res = await fetch("http://localhost:8000/destinations");
+    console.log(res)
     const data = await res.json();
     setDestinations(data);
   };
@@ -22,14 +23,13 @@ export default function DestinationManager() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //  Highlight: Determines if this is an Update (PUT) or Create (POST)
     const url = editId
-      ? `http://localhost:8000/destinations/${editId}`   //  Sends PUT request to update
+      ? `http://localhost:8000/destinations/${editId}`   
       : "http://localhost:8000/destinations";
 
-    const method = editId ? "PUT" : "POST";   // Chooses PUT for update, POST for create
+    const method = editId ? "PUT" : "POST";   
 
-    //  Highlight: Sends request to backend to update or create
+  
     await fetch(url, {
       method,
       headers: { "Content-Type": "application/json" },
@@ -54,7 +54,7 @@ export default function DestinationManager() {
   };
 
   const handleEdit = (destination) => {
-    // 🔥 Highlight: Pre-fills form with selected destination and sets editId for PUT request
+   
     setForm({
       name: destination.name,
       description: destination.description || "",
@@ -63,7 +63,7 @@ export default function DestinationManager() {
       photos: destination.photos || [],
       coordinates: destination.coordinates || { lat: "", lng: "" },
     });
-    setEditId(destination.id);   // Stores ID for use in PUT request
+    setEditId(destination.id);   
   };
 
   useEffect(() => {

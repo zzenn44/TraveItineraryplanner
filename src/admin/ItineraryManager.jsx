@@ -88,14 +88,41 @@ export default function ItineraryManager() {
         <h1 className="text-2xl font-bold text-[#4c6444] mb-4">Itinerary Manager</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded shadow max-w-2xl mb-8">
-          <input className="w-full border p-2 rounded" placeholder="User ID" value={form.user_id}
+          <input className="w-full border p-2 rounded" placeholder="Admin Name" value={form.user_id}
             onChange={(e) => setForm({ ...form, user_id: e.target.value })} />
 
           <input className="w-full border p-2 rounded" placeholder="Title" value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })} />
 
-          <input className="w-full border p-2 rounded" placeholder="Duration (days)" type="number" value={form.duration_days}
-            onChange={(e) => setForm({ ...form, duration_days: e.target.value })} />
+         
+<input
+  className="w-full border p-2 rounded"
+  placeholder="Duration (days)"
+  type="number"
+  min="1"  
+  value={form.duration_days}
+  onChange={(e) => {
+    let newDuration = parseInt(e.target.value || 0, 10);
+    if (newDuration < 1) newDuration = 1;
+  
+    let newDays = [...form.days];
+    if (newDuration > newDays.length) {
+    
+      for (let i = newDays.length; i < newDuration; i++) {
+        newDays.push({ day: i + 1, destinations: [] });
+      }
+    } else if (newDuration < newDays.length) {
+    
+      newDays = newDays.slice(0, newDuration);
+    }
+
+    setForm({
+      ...form,
+      duration_days: newDuration,
+      days: newDays,
+    });
+  }}
+/>
 
           <select className="w-full border p-2 rounded" value={form.difficulty}
             onChange={(e) => setForm({ ...form, difficulty: e.target.value })}>
@@ -104,7 +131,7 @@ export default function ItineraryManager() {
             <option value="Challenging">Challenging</option>
           </select>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <label className="font-bold">Days & Destinations</label>
             {form.days.map((entry, index) => (
               <div key={index} className="flex gap-2">
@@ -123,7 +150,31 @@ export default function ItineraryManager() {
             >
               + Add Day
             </button>
-          </div>
+          </div> */}
+
+          {/* Days & Destinations */}
+<div className="space-y-2">
+  <label className="font-bold">Days & Destinations</label>
+  {form.days.map((entry, index) => (
+    <div key={index} className="flex gap-2">
+      <input
+        type="number"
+        className="w-1/3 border p-2 rounded"
+        placeholder="Day"
+        value={entry.day}
+        disabled 
+      />
+      <input
+        className="w-2/3 border p-2 rounded"
+        placeholder="Destination names (comma-separated)"
+        value={entry.destinations.join(", ")}
+        onChange={(e) =>
+          updateDay(index, "destinations", e.target.value)
+        }
+      />
+    </div>
+  ))}
+</div>
 
           <input className="w-full border p-2 rounded" placeholder="Max Elevation (m)" type="number"
             value={form.max_elevation_m}
