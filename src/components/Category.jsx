@@ -11,7 +11,6 @@ const CategoryPage = () => {
   const [error, setError] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Axios instance with base configuration
   const api = axios.create({
     baseURL: 'http://localhost:8000',
     headers: {
@@ -28,7 +27,6 @@ const CategoryPage = () => {
       .replace(/\s+/g, '-')
   , []);
 
-  // Fetch category items
   const fetchCategoryItems = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -37,7 +35,6 @@ const CategoryPage = () => {
       const normalizedCategory = normalizeCategory(categoryName);
       const response = await api.get(`/category/${normalizedCategory}`);
 
-      // Accept both array or wrapped payloads. Normalize shape.
       const data = Array.isArray(response.data)
         ? response.data
         : Array.isArray(response.data?.results)
@@ -53,18 +50,14 @@ const CategoryPage = () => {
     }
   }, [api, categoryName, normalizeCategory]);
 
-  // Effect to fetch items when component mounts or category changes
   useEffect(() => {
     fetchCategoryItems();
-    // Reset selected item when category changes
     setSelectedItem(null);
   }, [categoryName, fetchCategoryItems]);
 
-  // Modal controls
   const openModal = (item) => setSelectedItem(item);
   const closeModal = () => setSelectedItem(null);
 
-  // Close on ESC
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === 'Escape') closeModal();
@@ -75,7 +68,6 @@ const CategoryPage = () => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [selectedItem]);
 
-  // Renderers
   const LoadingState = (
     <div className="flex justify-center items-center min-h-screen">
       <div className="text-2xl text-green-600">Loading {categoryName} treks...</div>
@@ -264,7 +256,6 @@ const CategoryPage = () => {
                 </button>
                 <button
                   onClick={() => {
-                    // Placeholder: integrate with your save/itinerary cart flow
                     alert('Saved to favorites (placeholder).');
                     closeModal();
                   }}

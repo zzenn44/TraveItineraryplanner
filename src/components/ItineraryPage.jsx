@@ -1,3 +1,6 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
@@ -46,7 +49,7 @@ const ItineraryPage = ({ user, onSave }) => {
   const handleSaveItinerary = async () => {
     try {
       if (!user) {
-        alert("Please log in to save itineraries");
+        toast.warn("Please log in to save itineraries");
         return;
       }
 
@@ -58,21 +61,16 @@ const ItineraryPage = ({ user, onSave }) => {
         }
       });
 
-      // Map the itinerary data to match the expected structure in SavedItinerariesPage
       const mappedItinerary = {
         ...itinerary,
-        // Map the property names to match what SavedItinerariesPage expects
         duration_days: itinerary.duration,
         max_elevation_m: itinerary.elevation,
         budget_estimate: itinerary.cost,
         days_count: itinerary.days?.length || 0,
         permit_required_nepali: itinerary.permit_required_nepali || false,
-        // Add all destinations as a flat array for the saved itinerary
         destinations: Array.from(allDestinations),
-        // Ensure days array is properly structured with destinations
         days: itinerary.days?.map(day => ({
           ...day,
-          // Ensure destinations array exists and is properly formatted
           destinations: day.destinations || []
         })) || []
       };
@@ -84,15 +82,15 @@ const ItineraryPage = ({ user, onSave }) => {
       });
 
       setIsSaved(true);
-      alert("Itinerary saved successfully!");
+      toast.success("Itinerary saved successfully!");
     } catch (error) {
       console.error("Error saving itinerary:", error);
-      alert("Failed to save itinerary. Please try again.");
+      toast.error("Failed to save itinerary. Please try again.");
     }
   };
 
   const getAlternativeRecommendations = () => {
-    alert("Similar treks feature coming soon!");
+    toast.info("Similar treks feature coming soon!");
   };
 
   if (loading) {

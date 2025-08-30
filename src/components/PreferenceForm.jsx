@@ -188,7 +188,7 @@ const PreferenceForm = () => {
         </div>
 
         {/* Tags */}
-        <div>
+        {/* <div>
           <label className="block mb-1 text-[#4c6444] font-medium">
             Trek Features (Select all that apply)
           </label>
@@ -213,7 +213,7 @@ const PreferenceForm = () => {
           </select>
           
 
-        </div>
+        </div> */}
 
         {/* Submit Button */}
         <button

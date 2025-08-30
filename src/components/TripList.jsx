@@ -231,7 +231,7 @@ export default function TripList() {
     created(s) {
       setInterval(() => {
         s.prev();
-      }, 2500); // Autoplay manually with next()
+      }, 2500); 
     },
   });
 

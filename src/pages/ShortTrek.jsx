@@ -15,7 +15,7 @@ import chisapaninagarkotImg from "../assets/chisapani.webp";
 import sailungImg from "../assets/sailung.jpeg";
 
 
-// Map short trek names to asset image filenames
+
 const shortTrekImageMap = {
   "Ghorepani Poon Hill Trek": gorepanipoonhillImg,
   "Ghalegaun Trek":ghalegaunImg ,

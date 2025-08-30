@@ -8,7 +8,7 @@ const RecommendationsPage = () => {
 
   console.log("Recommendations data:", recommendations);
 
-  // If no recommendations data, redirect back to form
+ 
   if (!recommendations) {
     console.log("No recommendations found, redirecting to preferences");
     navigate("/preferences");
@@ -17,7 +17,7 @@ const RecommendationsPage = () => {
 
   let trekList = [];
 
-  // Handle array of trek objects
+ 
   if (Array.isArray(recommendations)) {
     trekList = recommendations.map((trek) => ({
       _id: trek._id,
@@ -32,7 +32,7 @@ const RecommendationsPage = () => {
 
   console.log("Processed trek list:", trekList);
 
-  // If no valid trek data found
+  
   if (trekList.length === 0) {
     console.error("No valid trek data found in recommendations:", recommendations);
     return (
@@ -54,7 +54,7 @@ const RecommendationsPage = () => {
   }
 
 
-  // Sort by similarity score (highest first)
+
   trekList.sort((a, b) => b.similarity_score - a.similarity_score);
 
   const handleTrekClick = (trek) => {

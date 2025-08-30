@@ -60,7 +60,6 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#e9ebd5] p-8">
       <div className="flex w-full max-w-6xl h-[80vh] shadow-lg rounded-lg overflow-hidden">
-        {/* Left side with image + overlay */}
         <div className="relative w-1/2 h-full hidden md:block">
           <img
             src={maybe4}

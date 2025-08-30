@@ -13,7 +13,7 @@ import yalapeakclimbImg from "../assets/yala.jpeg";
 
 
 
-// Map mountain names to asset image filenames
+
 const mountainImageMap = {
   "Chulu West Peak Climb": chuluwestpeakclimbImg,
   "Island Peak Climb": islandpeakclimbImg,

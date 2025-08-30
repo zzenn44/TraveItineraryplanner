@@ -67,7 +67,7 @@ const SavedItinerariesPage = () => {
     fetchDestinations();
   }, []);
 
-  // ✅ Fixed removeItinerary logic
+ 
   const removeItinerary = async (id) => {
     if (!id || !user?.id) {
       console.error("No itinerary ID or user ID provided");
@@ -78,7 +78,6 @@ const SavedItinerariesPage = () => {
       console.log("Removing itinerary with ID:", id);
       await axios.delete(`http://localhost:8000/saved/remove/${user.id}/${id}`);
 
-      // Correct filtering (handles both _id and id)
       setSavedItineraries(prev =>
         prev.filter(item => (item._id || item.id) !== id)
       );

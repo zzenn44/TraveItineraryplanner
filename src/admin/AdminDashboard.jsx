@@ -11,7 +11,7 @@ import {
 import Sidebar from "./Sidebar";
 import api from "../api/apiclient.js";
 
-// Admin Operation Card Component
+
 const AdminOperationCard = ({ title, description, icon, actions }) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 group">
@@ -85,16 +85,7 @@ export default function AdminDashboard() {
         "Delete locations"
       ]
     },
-    {
-      title: "User Management",
-      description: "User account and access control",
-      icon: <FaUsers />,
-      actions: [
-        "View user list",
-        "Manage user roles",
-        "Suspend/activate accounts"
-      ]
-    },
+
     {
       title: "Itinerary Management",
       description: "Create and manage itineraries",

@@ -19,13 +19,13 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
       }
     }
-    setLoading(false); // <-- done loading whether token valid or not
+    setLoading(false); 
   }, []);
 
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
-    window.location.href = "/"; // or navigate("/")
+    window.location.href = "/"; 
   };
 
   return (

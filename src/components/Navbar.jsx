@@ -29,7 +29,7 @@ const Navbar = () => {
 
         {user ? (
           <>
-            <span className="text-sm">Hi, {user.name || user.email}</span>
+            <span className="text-sm">Welcome {user.name || user.email}</span>
             <button
               onClick={logout}
               className="bg-[#4c6444] text-white px-3 py-1 rounded hover:bg-[#3e5338]"

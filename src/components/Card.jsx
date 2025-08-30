@@ -2,7 +2,6 @@
 import React from 'react';
 
 const Card = ({ name, description, image }) => {
-  // If image is a filename, load from assets
   const defaultImage = new URL('../assets/api.jpeg', import.meta.url).href;
   let imageUrl = defaultImage;
   if (image) {
