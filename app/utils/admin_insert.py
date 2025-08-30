@@ -4,7 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from app.utils.security import hash_password
 from dotenv import load_dotenv
 
-# Load environment variables
+
 load_dotenv(override=True)
 
 MONGO_URI = os.getenv("MONGO_URI")

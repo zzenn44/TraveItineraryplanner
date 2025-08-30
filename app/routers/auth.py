@@ -4,7 +4,7 @@ from app.utils.security import verify_password
 from app.database import get_database
 from app.schemas.auth import UserLogin
 from bson import ObjectId
-from app.schemas.user import UserCreate  # add this import
+from app.schemas.user import UserCreate  
 from app.utils.security import hash_password
 
 

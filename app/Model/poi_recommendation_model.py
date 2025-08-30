@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.cluster import DBSCAN
+from sklearn.cluster import HDBSCAN
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
@@ -184,9 +184,9 @@ class POIRecommendationModel:
         
         return features
     
-    def find_optimal_parameters(self, eps_range=np.arange(0.3, 2.0, 0.1), min_samples_range=range(2, 10)):
-        """Find optimal DBSCAN parameters using silhouette score"""
-        print("Finding optimal DBSCAN parameters...")
+    def find_optimal_parameters(self, eps_range=np.arange(5,10), min_samples_range=range(2, 10)):
+        """Find optimal HDBSCAN parameters using silhouette score"""
+        print("Finding optimal HDBSCAN parameters...")
         
         # Scale features
         features_scaled = self.scaler.fit_transform(self.features)
@@ -197,8 +197,8 @@ class POIRecommendationModel:
         
         for eps in eps_range:
             for min_samples in min_samples_range:
-                # Fit DBSCAN
-                dbscan = DBSCAN(eps=eps, min_samples=min_samples)
+                # Fit HDBSCAN
+                dbscan = HDBSCAN(min_cluster_size=eps, min_samples=min_samples)
                 labels = dbscan.fit_predict(features_scaled)
                 
                 
@@ -228,8 +228,8 @@ class POIRecommendationModel:
         return best_params, pd.DataFrame(results)
     
     def train_model(self, eps=None, min_samples=None):
-        """Train the DBSCAN clustering model"""
-        print("Training DBSCAN model...")
+        """Train the HDBSCAN clustering model"""
+        print("Training HDBSCAN model...")
         
         if self.features is None:
             raise ValueError("No data loaded. Please load data first using load_and_preprocess_data()")
@@ -243,8 +243,8 @@ class POIRecommendationModel:
             eps = best_params['eps']
             min_samples = best_params['min_samples']
         
-        # Train DBSCAN
-        self.dbscan = DBSCAN(eps=eps, min_samples=min_samples)
+        # Train HDBSCAN
+        self.dbscan = HDBSCAN(min_cluster_size=eps, min_samples=min_samples)
         self.clusters = self.dbscan.fit_predict(features_scaled)
         
         
@@ -271,9 +271,9 @@ class POIRecommendationModel:
         user_difficulty = self.difficulty_encoder.transform([user_preferences.get('difficulty', 'moderate')])[0]
         user_features = np.array([[
             user_difficulty,
-            user_preferences.get('max_elevation', 4000),
-            user_preferences.get('max_duration', 7),
-            user_preferences.get('max_cost', 15000)
+            user_preferences.get('elevation', 4000),
+            user_preferences.get('duration', 7),
+            user_preferences.get('cost', 15000)
         ]])
         
         # Scale user features
@@ -295,7 +295,7 @@ class POIRecommendationModel:
         # Calculate distances to cluster centers
         distances = []
         for cluster_id, center in cluster_centers:
-            distance = cdist(user_features_scaled, center.reshape(1, -1))[0][0]
+            distance = cdist(user_features_scaled, center.reshape(1, -1),metric="cosine")[0][0]
             distances.append((cluster_id, distance))
         
         # Sort by distance and get closest cluster
@@ -307,26 +307,11 @@ class POIRecommendationModel:
         
         # Calculate similarity scores within the cluster
         cluster_features = features_scaled[self.clusters == closest_cluster]
-        poi_distances = cdist(user_features_scaled, cluster_features)[0]
+        poi_distances = cdist(user_features_scaled, cluster_features,metric="cosine")[0]
         
         cluster_pois['similarity_score'] = 1 / (1 + poi_distances)
         
-        
-        filtered_pois = cluster_pois[
-            (cluster_pois['elevation_numeric'] <= user_preferences.get('max_elevation', float('inf'))) &
-            (cluster_pois['duration_days'] <= user_preferences.get('max_duration', float('inf'))) &
-            (cluster_pois['cost_numeric'] <= user_preferences.get('max_cost', float('inf')))
-        ]
-        
-        
-        # if len(filtered_pois) > 0:
-        #     recommendations = filtered_pois.nlargest(n_recommendations, 'similarity_score')
-        # else:
-        #     recommendations = cluster_pois.nlargest(n_recommendations, 'similarity_score')
-        if len(filtered_pois) > 0:
-            recommendations = filtered_pois.nlargest(n_recommendations, 'similarity_score')
-        else:
-            recommendations = cluster_pois.nlargest(n_recommendations, 'similarity_score')
+        recommendations = cluster_pois.nlargest(n_recommendations, 'similarity_score')
         
         # return recommendations[['poi_name', 'difficulty', 'elevation', 'duration', 'cost', 'similarity_score']]
         return recommendations[['poi_name', 'difficulty', 'elevation', 'duration', 'cost', 'similarity_score']].to_dict(orient="records")
@@ -428,9 +413,7 @@ def train_model():
         print("Analyzing clusters...")
         model.analyze_clusters()
         
-        # Visualize clusters
-        print("Creating visualizations...")
-        model.visualize_clusters()
+     
         
         # Example recommendation
         user_preferences = {
@@ -444,14 +427,16 @@ def train_model():
         recommendations = model.get_recommendations(user_preferences, n_recommendations=5)
         print("\nSample recommendations for moderate difficulty, max 4000m elevation, max 10 days, max 20000 NPR:")
         print("=" * 80)
-        print(recommendations.to_string(index=False))
+        print(recommendations)
         
         # Save the trained model
         import pickle
         with open('poi_model.pkl', 'wb') as f:
             pickle.dump(model, f)
         print("\nModel saved as 'poi_model.pkl'")
-        
+        # Visualize clusters
+        print("Creating visualizations...")
+        model.visualize_clusters()
         return model
         
     except Exception as e:
@@ -475,10 +460,16 @@ def main():
         print(f"Unexpected error: {e}")
 
 if __name__ == "__main__":
-    # model.get_recommendations({
-    #     'difficulty': 'moderate',
-    #     'max_elevation': 4000,
-    #     'max_duration': 10,
-    #     'max_cost': 20000
-    # }, n_recommendations=5)
+
     main()
+# if __name__ == "__main__":
+#     import pickle
+#     # model = train_model()
+#     with open('poi_model.pkl', 'rb') as f:
+#         model = pickle.load(f)
+#     print(model.get_recommendations({
+#         'difficulty': 'moderate',
+#         'max_elevation': 5000,
+#         'max_duration': 15,
+#         'max_cost': 20000
+#     }, n_recommendations=5))

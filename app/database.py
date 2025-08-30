@@ -4,7 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
    
 from dotenv import load_dotenv
-load_dotenv()  # Load environment variables from .env file
+load_dotenv()  
 
 MONGO_URL = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(MONGO_URL)

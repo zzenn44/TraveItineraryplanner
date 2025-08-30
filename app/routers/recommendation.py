@@ -23,7 +23,7 @@ except Exception as e:
     print(f"Error loading model: {e}")
     sys.exit("Failed to load model, exiting...")
 
-# ---------- Pydantic Schema ----------
+
 class PreferenceInput(BaseModel):
     elevation: Optional[int]
     difficulty: Optional[str]
@@ -31,7 +31,6 @@ class PreferenceInput(BaseModel):
     cost: Optional[int]
     tags: Optional[List[str]]
 
-# ---------- Route ----------
 @router.post("/recommend-poi")
 async def recommend_poi(input_data: PreferenceInput):
     if model is None:

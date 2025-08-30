@@ -1707,46 +1707,6 @@ itinerary_jomsom_muktinath_trek = {
 
 
 
-itinerary_hilang_trek = {
-    "user_id": "scraper_admin",
-    "title": "Hilang Trek",
-    "duration_days": 14,
-    "difficulty": "Moderate to Challenging",
-    "max_elevation_m": 4000,
-    "rating": 4.5,
-    "category": "Circuit",
-    "budget_estimate": "NPR 12,000 to NPR 20,000",
-    "permit_required_nepali": False,
-    "permit_fee_npr": 0,
-    "emergency_contacts": {
-        "Nepal Tourist Police": {
-            "tel": "+977-1-4247041, 1144",
-            "email": "policetourist@nepalpolice.gov.np"
-        },
-        "Himalayan Rescue Association": {
-            "tel": "+977-1-4440292 / 4440293",
-            "email": "hra@mail.com.np"
-        }
-    },
-    "days": [
-        { "day": 1, "destinations": ["Dhangadhi", "Hilang"], "label": "Drive from Dhangadhi to Hilang (via jeep)" },
-        { "day": 2, "destinations": ["Hilang"], "label": "Explore Hilang village and surroundings" },
-        { "day": 3, "destinations": ["Nearby villages"], "label": "Trek to nearby villages" },
-        { "day": 4, "destinations": ["Hilang Region"], "label": "Explore local culture and nature" },
-        { "day": 5, "destinations": ["Hilang"], "label": "Rest day in Hilang" },
-        { "day": 6, "destinations": ["Hilang", "Nearby Village"], "label": "Trek to nearby village" },
-        { "day": 7, "destinations": ["Nearby Village"], "label": "Explore surroundings" },
-        { "day": 8, "destinations": ["Nearby Village", "Hilang"], "label": "Return trek to Hilang" },
-        { "day": 9, "destinations": ["Hilang"], "label": "Rest day" },
-        { "day": 10, "destinations": ["Hilang", "Dhangadhi"], "label": "Return trek to Dhangadhi" },
-        { "day": 11, "destinations": ["Dhangadhi Town"], "label": "Drive back to Dhangadhi town" },
-        { "day": 12, "destinations": [], "label": "Buffer/rest day" },
-        { "day": 13, "destinations": [], "label": "Buffer/rest day" },
-        { "day": 14, "destinations": [], "label": "Buffer/rest day" }
-    ]
-}
-
-
 itinerary_phoksundo_lake_trek = {
     "user_id": "scraper_admin",
     "title": "Phoksundo Lake Trek",
@@ -1780,6 +1740,243 @@ itinerary_phoksundo_lake_trek = {
         { "day": 9, "destinations": ["Dunai", "Juphal"], "label": "Trek to Juphal and prepare for return flight" }
     ]
 }
+itinerary_hilang_trek = {
+  "user_id": "scraper_admin",
+  "title": "Hilang Trek",
+  "duration_days": 12,
+  "difficulty": "Moderate to Challenging",
+  "max_elevation_m": 4000,
+  "rating": 4.3,
+  "category": "Valley",
+  "budget_estimate": "NPR 12,000 to NPR 20,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 3000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {"tel": "+977-1-4247041, 1144", "email": "policetourist@nepalpolice.gov.np"},
+    "Himalayan Rescue Association": {"tel": "+977-1-4440292 / 4440293", "email": "hra@mail.com.np"}
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Tumlingtar"], "label": "Flight from Kathmandu to Tumlingtar" },
+    { "day": 2, "destinations": ["Tumlingtar", "Num"], "label": "Drive to Num and short trek" },
+    { "day": 3, "destinations": ["Num", "Seduwa"], "label": "Trek to Seduwa (Makalu entry)" },
+    { "day": 4, "destinations": ["Seduwa", "Tashigaon"], "label": "Trek to Tashigaon" },
+    { "day": 5, "destinations": ["Tashigaon", "Kauma"], "label": "Trek to Kauma" },
+    { "day": 6, "destinations": ["Kauma", "Hilang Base"], "label": "Trek to Hilang Base" },
+    { "day": 7, "destinations": ["Hilang Base"], "label": "Exploration and acclimatization" },
+    { "day": 8, "destinations": ["Hilang Base", "Kauma"], "label": "Return trek to Kauma" },
+    { "day": 9, "destinations": ["Kauma", "Tashigaon"], "label": "Trek to Tashigaon" },
+    { "day": 10, "destinations": ["Tashigaon", "Seduwa"], "label": "Trek back to Seduwa" },
+    { "day": 11, "destinations": ["Seduwa", "Num"], "label": "Trek to Num" },
+    { "day": 12, "destinations": ["Num", "Kathmandu"], "label": "Drive and flight back to Kathmandu" }
+  ]
+}
+
+itinerary_makalu_barun = {
+  "user_id": "scraper_admin",
+  "title": "Makalu Barun National Park Trek",
+  "duration_days": 18,
+  "difficulty": "Challenging",
+  "max_elevation_m": 5300,
+  "rating": 4.6,
+  "category": "Basecamp",
+  "budget_estimate": "NPR 20,000 to NPR 40,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 3000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {"tel": "+977-1-4247041, 1144", "email": "policetourist@nepalpolice.gov.np"},
+    "Himalayan Rescue Association": {"tel": "+977-1-4440292 / 4440293", "email": "hra@mail.com.np"}
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Tumlingtar"], "label": "Fly to Tumlingtar and drive to Num" },
+    { "day": 2, "destinations": ["Num", "Seduwa"], "label": "Trek to Seduwa" },
+    { "day": 3, "destinations": ["Seduwa", "Tashigaon"], "label": "Trek to Tashigaon" },
+    { "day": 4, "destinations": ["Tashigaon", "Kauma"], "label": "Trek to Kauma" },
+    { "day": 5, "destinations": ["Kauma", "Mumbuk"], "label": "Trek to Mumbuk" },
+    { "day": 6, "destinations": ["Mumbuk", "Nehe Kharka"], "label": "Trek to Nehe Kharka" },
+    { "day": 7, "destinations": ["Nehe Kharka", "Shershong"], "label": "Trek to Shershong" },
+    { "day": 8, "destinations": ["Shershong", "Makalu Base Camp"], "label": "Trek to Makalu Base Camp (5300m)" },
+    { "day": 9, "destinations": ["Makalu Base Camp"], "label": "Rest and exploration day" },
+    { "day": 10, "destinations": ["Makalu Base Camp", "Nehe Kharka"], "label": "Return trek to Nehe Kharka" },
+    { "day": 11, "destinations": ["Nehe Kharka", "Mumbuk"], "label": "Trek to Mumbuk" },
+    { "day": 12, "destinations": ["Mumbuk", "Kauma"], "label": "Trek to Kauma" },
+    { "day": 13, "destinations": ["Kauma", "Tashigaon"], "label": "Trek to Tashigaon" },
+    { "day": 14, "destinations": ["Tashigaon", "Seduwa"], "label": "Trek to Seduwa" },
+    { "day": 15, "destinations": ["Seduwa", "Num"], "label": "Trek to Num" },
+    { "day": 16, "destinations": ["Num", "Tumlingtar"], "label": "Drive to Tumlingtar" },
+    { "day": 17, "destinations": ["Tumlingtar"], "label": "Buffer/rest day" },
+    { "day": 18, "destinations": ["Tumlingtar", "Kathmandu"], "label": "Fly back to Kathmandu" }
+  ]
+}
+
+itinerary_everest_base_camp = {
+  "user_id": "scraper_admin",
+  "title": "Everest Base Camp Trek",
+  "duration_days": 12,
+  "difficulty": "Advanced",
+  "max_elevation_m": 5364,
+  "rating": 4.9,
+  "category": "Basecamp",
+  "budget_estimate": "NPR 30,000 to NPR 50,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 5000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {"tel": "+977-1-4247041, 1144", "email": "policetourist@nepalpolice.gov.np"},
+    "Himalayan Rescue Association": {"tel": "+977-1-4440292 / 4440293", "email": "hra@mail.com.np"}
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Lukla", "Phakding"], "label": "Fly to Lukla, trek to Phakding" },
+    { "day": 2, "destinations": ["Phakding", "Namche Bazaar"], "label": "Trek to Namche Bazaar" },
+    { "day": 3, "destinations": ["Namche Bazaar"], "label": "Acclimatization at Namche" },
+    { "day": 4, "destinations": ["Namche Bazaar", "Tengboche"], "label": "Trek to Tengboche" },
+    { "day": 5, "destinations": ["Tengboche", "Dingboche"], "label": "Trek to Dingboche" },
+    { "day": 6, "destinations": ["Dingboche"], "label": "Acclimatization in Dingboche" },
+    { "day": 7, "destinations": ["Dingboche", "Lobuche"], "label": "Trek to Lobuche" },
+    { "day": 8, "destinations": ["Lobuche", "Gorakshep", "EBC"], "label": "Trek to Gorakshep and Everest Base Camp (5364m)" },
+    { "day": 9, "destinations": ["Kala Patthar", "Pheriche"], "label": "Climb Kala Patthar (5545m) and trek to Pheriche" },
+    { "day": 10, "destinations": ["Pheriche", "Namche Bazaar"], "label": "Trek to Namche Bazaar" },
+    { "day": 11, "destinations": ["Namche Bazaar", "Lukla"], "label": "Trek to Lukla" },
+    { "day": 12, "destinations": ["Lukla", "Kathmandu"], "label": "Fly back to Kathmandu" }
+  ]
+}
+
+itinerary_tsho_rolpa = {
+  "user_id": "scraper_admin",
+  "title": "Tsho Rolpa Trek",
+  "duration_days": 10,
+  "difficulty": "Moderate to Challenging",
+  "max_elevation_m": 4580,
+  "rating": 4.5,
+  "category": "Lake",
+  "budget_estimate": "NPR 25,000 to NPR 30,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 3000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {"tel": "+977-1-4247041, 1144", "email": "policetourist@nepalpolice.gov.np"},
+    "Himalayan Rescue Association": {"tel": "+977-1-4440292 / 4440293", "email": "hra@mail.com.np"}
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Dolakha"], "label": "Drive from Kathmandu to Dolakha" },
+    { "day": 2, "destinations": ["Dolakha", "Shingati"], "label": "Drive/trek to Shingati" },
+    { "day": 3, "destinations": ["Shingati", "Jagat"], "label": "Trek to Jagat" },
+    { "day": 4, "destinations": ["Jagat", "Simigaon"], "label": "Trek to Simigaon" },
+    { "day": 5, "destinations": ["Simigaon", "Dongang"], "label": "Trek to Dongang" },
+    { "day": 6, "destinations": ["Dongang", "Beding"], "label": "Trek to Beding" },
+    { "day": 7, "destinations": ["Beding", "Na"], "label": "Trek to Na" },
+    { "day": 8, "destinations": ["Na", "Tsho Rolpa Lake"], "label": "Trek to Tsho Rolpa Lake (4580m)" },
+    { "day": 9, "destinations": ["Na", "Beding"], "label": "Return trek to Beding" },
+    { "day": 10, "destinations": ["Beding", "Kathmandu"], "label": "Trek back and drive to Kathmandu" }
+  ]
+}
+
+itinerary_api_base_camp = {
+  "user_id": "scraper_admin",
+  "title": "Api Base Camp Trek",
+  "duration_days": 12,
+  "difficulty": "Advanced",
+  "max_elevation_m": 4273,
+  "rating": 4.4,
+  "category": "Basecamp",
+  "budget_estimate": "Around NPR 30,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 2000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {"tel": "+977-1-4247041, 1144", "email": "policetourist@nepalpolice.gov.np"},
+    "Himalayan Rescue Association": {"tel": "+977-1-4440292 / 4440293", "email": "hra@mail.com.np"}
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Darchula"], "label": "Flight/drive to Darchula" },
+    { "day": 2, "destinations": ["Darchula", "Latinath"], "label": "Drive to Latinath and trek start" },
+    { "day": 3, "destinations": ["Latinath", "Paribagar"], "label": "Trek to Paribagar" },
+    { "day": 4, "destinations": ["Paribagar", "Siti"], "label": "Trek to Siti" },
+    { "day": 5, "destinations": ["Siti", "Domal"], "label": "Trek to Domal" },
+    { "day": 6, "destinations": ["Domal", "Api Base Camp"], "label": "Trek to Api Base Camp (4273m)" },
+    { "day": 7, "destinations": ["Api Base Camp"], "label": "Exploration and rest day" },
+    { "day": 8, "destinations": ["Api Base Camp", "Domal"], "label": "Return to Domal" },
+    { "day": 9, "destinations": ["Domal", "Siti"], "label": "Trek to Siti" },
+    { "day": 10, "destinations": ["Siti", "Paribagar"], "label": "Trek back to Paribagar" },
+    { "day": 11, "destinations": ["Paribagar", "Darchula"], "label": "Trek to Darchula" },
+    { "day": 12, "destinations": ["Darchula", "Kathmandu"], "label": "Drive/flight back to Kathmandu" }
+  ]
+}
+
+itinerary_dhaulagiri_circuit = {
+  "user_id": "scraper_admin",
+  "title": "Dhaulagiri Circuit Trek",
+  "duration_days": 20,
+  "difficulty": "Advanced",
+  "max_elevation_m": 5360,
+  "rating": 4.7,
+  "category": "Circuit",
+  "budget_estimate": "NPR 30,000 to NPR 40,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 4000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {"tel": "+977-1-4247041, 1144", "email": "policetourist@nepalpolice.gov.np"},
+    "Himalayan Rescue Association": {"tel": "+977-1-4440292 / 4440293", "email": "hra@mail.com.np"}
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Beni"], "label": "Drive to Beni" },
+    { "day": 2, "destinations": ["Beni", "Babiachaur"], "label": "Trek to Babiachaur" },
+    { "day": 3, "destinations": ["Babiachaur", "Darapani"], "label": "Trek to Darapani" },
+    { "day": 4, "destinations": ["Darapani", "Muri"], "label": "Trek to Muri" },
+    { "day": 5, "destinations": ["Muri", "Boghara"], "label": "Trek to Boghara" },
+    { "day": 6, "destinations": ["Boghara", "Dobang"], "label": "Trek to Dobang" },
+    { "day": 7, "destinations": ["Dobang", "Choriban Khola"], "label": "Trek to Choriban Khola" },
+    { "day": 8, "destinations": ["Choriban Khola", "Italian Base Camp"], "label": "Trek to Italian Base Camp" },
+    { "day": 9, "destinations": ["Italian Base Camp"], "label": "Rest/acclimatization day" },
+    { "day": 10, "destinations": ["Italian Base Camp", "Glacier Camp"], "label": "Trek to Glacier Camp" },
+    { "day": 11, "destinations": ["Glacier Camp", "Dhaulagiri Base Camp"], "label": "Trek to Dhaulagiri Base Camp" },
+    { "day": 12, "destinations": ["Dhaulagiri Base Camp"], "label": "Rest/acclimatization at Dhaulagiri Base Camp" },
+    { "day": 13, "destinations": ["Dhaulagiri Base Camp", "French Pass", "Hidden Valley"], "label": "Cross French Pass to Hidden Valley" },
+    { "day": 14, "destinations": ["Hidden Valley"], "label": "Rest/exploration at Hidden Valley" },
+    { "day": 15, "destinations": ["Hidden Valley", "Yak Kharka"], "label": "Trek to Yak Kharka" },
+    { "day": 16, "destinations": ["Yak Kharka", "Jomsom"], "label": "Trek to Jomsom" },
+    { "day": 17, "destinations": ["Jomsom"], "label": "Buffer day in Jomsom" },
+    { "day": 18, "destinations": ["Jomsom", "Pokhara"], "label": "Fly to Pokhara" },
+    { "day": 19, "destinations": ["Pokhara"], "label": "Rest day in Pokhara" },
+    { "day": 20, "destinations": ["Pokhara", "Kathmandu"], "label": "Drive/fly back to Kathmandu" }
+  ]
+}
+itinerary_makalu_base_camp = {
+  "user_id": "scraper_admin",
+  "title": "Makalu Base Camp Trek",
+  "duration_days": 14,
+  "difficulty": "Advanced",
+  "max_elevation_m": 4870,
+  "rating": 4.6,
+  "category": "Basecamp",
+  "budget_estimate": "NPR 20,000 to NPR 30,000",
+  "permit_required_nepali": True,
+  "permit_fee_npr": 3000,
+  "emergency_contacts": {
+    "Nepal Tourist Police": {
+      "tel": "+977-1-4247041, 1144",
+      "email": "policetourist@nepalpolice.gov.np"
+    },
+    "Himalayan Rescue Association": {
+      "tel": "+977-1-4440292 / 4440293",
+      "email": "hra@mail.com.np"
+    }
+  },
+  "days": [
+    { "day": 1, "destinations": ["Kathmandu", "Tumlingtar", "Chichila"], "label": "Fly to Tumlingtar, drive to Chichila" },
+    { "day": 2, "destinations": ["Chichila", "Num"], "label": "Trek to Num" },
+    { "day": 3, "destinations": ["Num", "Seduwa"], "label": "Descend to Arun River and climb to Seduwa (Park entry)" },
+    { "day": 4, "destinations": ["Seduwa", "Tashigaon"], "label": "Trek to Tashigaon" },
+    { "day": 5, "destinations": ["Tashigaon", "Khongma Danda"], "label": "Steep climb to Khongma Danda" },
+    { "day": 6, "destinations": ["Khongma Danda", "Dobate"], "label": "Cross Shipton La Pass, descend to Dobate" },
+    { "day": 7, "destinations": ["Dobate", "Yangle Kharka"], "label": "Trek through forest to Yangle Kharka" },
+    { "day": 8, "destinations": ["Yangle Kharka", "Langmale Kharka"], "label": "Trek to Langmale Kharka" },
+    { "day": 9, "destinations": ["Langmale Kharka", "Makalu Base Camp"], "label": "Trek to Makalu Base Camp (4870m)" },
+    { "day": 10, "destinations": ["Makalu Base Camp"], "label": "Exploration and acclimatization at Makalu Base Camp" },
+    { "day": 11, "destinations": ["Makalu Base Camp", "Yangle Kharka"], "label": "Return trek to Yangle Kharka" },
+    { "day": 12, "destinations": ["Yangle Kharka", "Dobate"], "label": "Trek to Dobate" },
+    { "day": 13, "destinations": ["Dobate", "Khongma Danda"], "label": "Climb back to Khongma Danda" },
+    { "day": 14, "destinations": ["Khongma Danda", "Seduwa"], "label": "Trek down to Seduwa, return route towards Tumlingtar" }
+  ]
+}
+
+
 
 
 itinerary_list = [
@@ -1832,7 +2029,15 @@ itinerary_list = [
     itinerary_naya_kanga_peak_climb,
     itinerary_makalu_barun_national_park_trek,
     itinerary_jomsom_muktinath_trek,
-    itinerary_phoksundo_lake_trek
+    itinerary_phoksundo_lake_trek,
+    itinerary_hilang_trek,
+    itinerary_makalu_barun,
+    itinerary_everest_base_camp,
+    itinerary_tsho_rolpa,
+    itinerary_api_base_camp,
+    itinerary_dhaulagiri_circuit,
+    itinerary_makalu_base_camp
+
 
     
 ]

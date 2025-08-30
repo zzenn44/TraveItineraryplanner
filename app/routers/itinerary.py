@@ -142,6 +142,8 @@ async def create_itinerary(itinerary: ItineraryCreate, db: AsyncIOMotorDatabase 
 async def get_all(db: AsyncIOMotorDatabase = Depends(get_database)):
     return await crud.get_all_itineraries(db)
 
+
+
 @router.get("/{itinerary_id}")
 async def get_itinerary_by_id(itinerary_id: str, db: AsyncIOMotorDatabase = Depends(get_database)):
     try:

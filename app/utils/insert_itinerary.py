@@ -6,7 +6,7 @@ import os
 
 from itinerary_importer import itinerary_list
 
-# Load .env and Mongo URI
+
 load_dotenv()
 MONGO_URI = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(MONGO_URI)

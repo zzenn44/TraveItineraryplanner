@@ -9,10 +9,10 @@ class InteractionBase(BaseModel):
     action: Literal["view", "like", "book"]  
     timestamp: datetime      
 
-# Schema for inserting new interaction
+
 class InteractionCreate(InteractionBase):
     pass
 
-#Schema for returning interaction from DB
+
 class InteractionOut(InteractionBase):
     id: str  
